@@ -1,4 +1,4 @@
-# Case study #1 : Foodie-Fi
+# Case study #1 : Danny's Diner
 
 
 
