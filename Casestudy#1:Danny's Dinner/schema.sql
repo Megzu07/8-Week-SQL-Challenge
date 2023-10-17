@@ -56,4 +56,125 @@ solution:
 | B          | curry        |
 | C          | ramen        |
 
+4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+
+SELECT product_name, COUNT(m.product_id) AS count1
+FROM dannys_diner.menu m
+INNER JOIN dannys_diner.sales s ON (m.product_id = s.product_id)
+GROUP BY product_name
+ORDER BY count1 DESC
+LIMIT 1;
+
+solution:
+
+| product_name | count1 |
+|--------------|--------|
+| ramen        | 8      |
+
+5. Which item was purchased first by the customer after they became a member?
+
+WITH temp AS (
+    SELECT
+        s.customer_id,
+        m.product_name,
+        order_date,
+        RANK() OVER (PARTITION BY s.customer_id ORDER BY s.order_date) AS cs_rank
+    FROM
+        dannys_diner.sales s
+    INNER JOIN
+        dannys_diner.menu m ON (m.product_id = s.product_id)
+    INNER JOIN
+        dannys_diner.members me ON (s.customer_id = me.customer_id)
+    WHERE
+        s.order_date >= me.join_date
+)
+SELECT
+    customer_id,
+    product_name,
+    order_date
+FROM
+    temp
+WHERE
+    cs_rank = 1;
+
+solution :
+
+| customer_id | product_name | order_date |
+|------------|--------------|------------|
+| A          | curry        | 2021-01-07 |
+| B          | sushi        | 2021-01-11 |
+
+7. Which item was purchased just before the customer became a member?
+
+WITH temp AS 
+(
+    SELECT
+        s.customer_id,
+        m.product_name,
+        order_date,
+        join_date,
+        RANK() OVER (PARTITION BY s.customer_id ORDER BY s.order_date DESC) AS cs_rank
+    FROM
+        dannys_diner.sales s
+    INNER JOIN
+        dannys_diner.menu m ON (m.product_id = s.product_id)
+    INNER JOIN
+        dannys_diner.members me ON (s.customer_id = me.customer_id)
+    WHERE
+        order_date < join_date
+)
+SELECT * FROM temp
+WHERE cs_rank = 1
+ORDER BY customer_id;
+
+solution: 
+
+| customer_id | product_name | order_date |
+|------------|--------------|------------|
+| A          | sushi        | 2021-01-01 |
+| A          | curry        | 2021-01-01 |
+| B          | sushi        | 2021-01-04 |
+
+8. What is the total items and amount spent for each member before they became a member?
+
+SELECT
+    s.customer_id,
+    COUNT(DISTINCT s.product_id) AS item_count,
+    SUM(m.price) AS total_in_$,
+    RANK() OVER (PARTITION BY s.customer_id)
+FROM
+    dannys_diner.menu m
+INNER JOIN
+    dannys_diner.sales s ON (m.product_id = s.product_id)
+INNER JOIN
+    dannys_diner.members me ON (s.customer_id = me.customer_id)
+WHERE
+    s.order_date < me.join_date
+GROUP BY 1;
+
+solution: 
+
+| customer_id | item_count | total_in_$ |
+|------------|------------|------------|
+| A          | 2          | 25         |
+| B          | 2          | 40         |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
