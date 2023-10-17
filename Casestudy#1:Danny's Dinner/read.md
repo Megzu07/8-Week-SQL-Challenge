@@ -3,7 +3,7 @@
 
 ## Table of Contents
 
-1. [Problem Statement](#problem-statement)
-2. [Dataset](#dataset)
-3. [Case Study Question](#case-study-question)
-4. [Solution](#solution)
+- [Problem statement](#introduction)
+- [Dataset](#introduction)
+- [Case study question](#introduction)
+- [Solution](#introduction)
