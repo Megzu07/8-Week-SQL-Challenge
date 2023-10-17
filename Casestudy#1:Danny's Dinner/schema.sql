@@ -159,6 +159,30 @@ solution:
 | A          | 2          | 25         |
 | B          | 2          | 40         |
 
+9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+
+SELECT
+    s.customer_id,
+    SUM(CASE
+        WHEN product_name = 'sushi' THEN (m.price * 20)
+        ELSE (m.price * 10)
+    END)
+FROM
+    dannys_diner.sales s
+INNER JOIN
+    dannys_diner.menu m ON (m.product_id = s.product_id)
+GROUP BY
+    s.customer_id
+ORDER BY
+    s.customer_id;
+
+solution: 
+
+| customer_id | sum |
+|------------|-----|
+| A          | 860 |
+| B          | 940 |
+| C          | 360 |
 
 
 
