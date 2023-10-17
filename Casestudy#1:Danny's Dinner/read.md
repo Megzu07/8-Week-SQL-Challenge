@@ -19,7 +19,7 @@ These insights will play a pivotal role in his decision-making process, particul
 </details>
 
 ### Dataset
-#### Table1:sales
+#### Table1:Sales
 
 * The sales table captures all customer_id level purchases with a corresponding order_date and product_id information for when and what menu items were ordered.
 
@@ -40,3 +40,43 @@ These insights will play a pivotal role in his decision-making process, particul
 | C          | 2021-01-01 | 3          |
 | C          | 2021-01-01 | 3          |
 | C          | 2021-01-07 | 3          |
+
+#### Table2: Menu 
+
+*The menu table maps the product_id to the actual product_name and price of each menu item.
+
+| product_id | product_name | price |
+|------------|--------------|-------|
+| 1          | sushi        | 10    |
+| 2          | curry        | 15    |
+| 3          | ramen        | 12    |
+
+#### Table2: Members
+
+*The final members table captures the join_date when a customer_id joined the beta version of the Danny’s Diner loyalty program.
+
+| customer_id | join_date  |
+|------------|------------|
+| A          | 2021-01-07 |
+| B          | 2021-01-09 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
