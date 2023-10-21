@@ -19,7 +19,7 @@ Danny, the CEO of this trendy fashion company has asked you to assist the teamâ€
 </details>
 
 ### Dataset
-#### Table1:Product Details
+#### Table1: Product Details
 
 - Balanced_tree.product_details includes all information about the entire range that Balanced Clothing sells in their store
 
@@ -38,8 +38,7 @@ Danny, the CEO of this trendy fashion company has asked you to assist the teamâ€
 | b9a74d     | 17    | White Striped Socks - Mens    | 2           | 6          | 17       | Mens          | Socks        | White Striped     |
 | 2feb6b     | 29    | Pink Fluro Polkadot Socks - Mens | 2        | 6          | 18       | Mens          | Socks        | Pink Fluro Polkadot |
 
-### Dataset
-#### Table1:Product Sales 
+#### Table2: Product Sales 
 
 - balanced_tree.sales contains product level information for all the transactions made for Balanced Tree including quantity, price, percentage discount, member status, a transaction ID and also the transaction timestamp.
 
