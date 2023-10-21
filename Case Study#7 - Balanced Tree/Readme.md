@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-- [Problem statement](#introduction)
+- [Problem Statement](#introduction)
 - [Dataset](#introduction)
 - [Case study question](#introduction)
 - [Solution](#introduction)
